@@ -9,17 +9,34 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var userNumber = 0
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBOutlet weak var imageLabel: UIImageView! {
+        didSet {
+            let user = User(userIndex: userNumber)
+            
+            imageLabel.image = UIImage(named: user.imageName)
+            bioLabel.text = "\(user.name), \(user.age)"
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBOutlet weak var bioLabel: UILabel!
+    
+    @IBAction func touchDislike() {
+        userNumber += 1
+        let user = User(userIndex: userNumber)
+        
+        imageLabel.image = UIImage(named: user.imageName)
+        bioLabel.text = "\(user.name), \(user.age)"
     }
-
-
+    
+    @IBAction func touchLike() {
+        userNumber += 1
+        let user = User(userIndex: userNumber)
+        
+        imageLabel.image = UIImage(named: user.imageName)
+        bioLabel.text = "\(user.name), \(user.age)"
+    }
 }
 
